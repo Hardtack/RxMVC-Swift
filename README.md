@@ -1,6 +1,6 @@
 # RxMVC
 
-[![CI Status](http://img.shields.io/travis/Choi Geonu/RxMVC.svg?style=flat)](https://travis-ci.org/Choi Geonu/RxMVC)
+[![CI Status](http://img.shields.io/travis/Hardtack/RxMVC-Swift.svg?style=flat)](https://travis-ci.org/Hardtack/RxMVC-Swift)
 [![Version](https://img.shields.io/cocoapods/v/RxMVC.svg?style=flat)](http://cocoapods.org/pods/RxMVC)
 [![License](https://img.shields.io/cocoapods/l/RxMVC.svg?style=flat)](http://cocoapods.org/pods/RxMVC)
 [![Platform](https://img.shields.io/cocoapods/p/RxMVC.svg?style=flat)](http://cocoapods.org/pods/RxMVC)

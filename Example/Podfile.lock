@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (3.3.1)
+  - FBSnapshotTestCase (2.1.0):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.0)
+  - FBSnapshotTestCase/Core (2.1.0)
+  - FBSnapshotTestCase/SwiftSupport (2.1.0):
+    - FBSnapshotTestCase/Core
+  - Nimble (3.2.0)
+  - Nimble-Snapshots (4.0.1):
+    - FBSnapshotTestCase (~> 2.0)
+    - Nimble
+    - Quick
+  - Quick (0.9.2)
+  - RxBlocking (2.4):
+    - RxSwift (~> 2.4)
+  - RxCocoa (2.4):
+    - RxSwift (~> 2.4)
+  - RxMVC (0.1.0):
+    - Alamofire (~> 3.3)
+    - RxCocoa (~> 2.0)
+    - RxSwift (~> 2.0)
+  - RxSwift (2.4)
+  - RxTests (2.4):
+    - RxSwift (~> 2.4)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Nimble (~> 3.0)
+  - Nimble-Snapshots
+  - Quick (~> 0.8)
+  - RxBlocking (~> 2.0)
+  - RxMVC (from `../`)
+  - RxTests (~> 2.0)
+
+EXTERNAL SOURCES:
+  RxMVC:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
+  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  Nimble-Snapshots: 2d15a585b816f7d14947ed6e172218f9d0980ea8
+  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  RxBlocking: 1226c1fa0ca1e0ca5f964d4330ca3649f2128680
+  RxCocoa: 7d6cd877de99f5640306b3d6cf87f580c1d91b61
+  RxMVC: fa1680699b1a56b67e9d1b98114de29e841d56d3
+  RxSwift: 67b9ef4e8b34fb394e200e754c6a09cc16559f94
+  RxTests: 8b9691e6476dfa6025fae9a69f449bf4cb5e5cfc
+
+COCOAPODS: 0.39.0

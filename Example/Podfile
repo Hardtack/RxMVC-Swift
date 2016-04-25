@@ -6,7 +6,9 @@ end
 
 target 'RxMVC_Tests', :exclusive => true do
   pod 'RxMVC', :path => '../'
-
+  
+  pod 'RxBlocking', '~> 2.0'
+  pod 'RxTests',    '~> 2.0'
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
   pod 'FBSnapshotTestCase'
