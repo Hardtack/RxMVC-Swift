@@ -12,8 +12,6 @@ import RxSwift
 
 public protocol View {
     associatedtype State // State type
-    associatedtype Event // Event type
     
-    func subscribe(stateStream: Observable<State>) -> Disposable
-    var eventStream: Observable<Event> { get }
+    func update(stateStream: Observable<State>) -> Disposable
 }

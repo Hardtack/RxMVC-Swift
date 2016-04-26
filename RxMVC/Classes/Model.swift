@@ -13,7 +13,7 @@ public protocol Model {
     associatedtype Action // Action type
     associatedtype State // State type
     
-    func subscribe(actionStream: Observable<Action>) -> Observable<State>
+    func manipulate(actionStream: Observable<Action>) -> Observable<State>
 }
 
 public protocol ConstantModel: Model {
@@ -24,7 +24,7 @@ public protocol ConstantModel: Model {
 }
 
 public extension ConstantModel {
-    func subscribe(actionStream: Observable<Action>) -> Observable<State> {
+    func manipulate(actionStream: Observable<Action>) -> Observable<State> {
         return Observable.just(self.state)
     }
 }
@@ -38,7 +38,7 @@ public protocol ReducerModel: Model {
 }
 
 public extension ReducerModel {
-    func subscribe(actionStream: Observable<Action>) -> Observable<State> {
+    func manipulate(actionStream: Observable<Action>) -> Observable<State> {
         return actionStream.scan(initialState, accumulator: {state, action in
             return self.reduce(state, with: action)
         })

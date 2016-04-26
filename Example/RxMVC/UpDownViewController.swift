@@ -55,7 +55,7 @@ struct UpDownModel: ReducerModel {
     }
 }
 
-public class UpDownViewController: UIViewController, View {
+public class UpDownViewController: UIViewController, View, UserInteractable {
     public typealias Event = UpDownEvent
     public typealias State = Int
     
@@ -66,28 +66,27 @@ public class UpDownViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
-    public func subscribe(stateStream: Observable<State>) -> Disposable {
+    public func update(stateStream: Observable<State>) -> Disposable {
         return stateStream.subscribeNext { (number) in
             self.countLabel.text = "\(number)"
-            }
+        }
     }
     
-    public var eventStream: Observable<Event> {
-        get {
-            return [
-                self.upButton.rx_tap.map{_ in UpDownEvent.ClickUp},
-                self.downButton.rx_tap.map{_ in UpDownEvent.ClickDown},
-                self.resetButton.rx_tap.map{_ in UpDownEvent.ClickReset},
-                ].toObservable().merge()
-        }
+    public func interact() -> Observable<Event> {
+        return [
+            self.upButton.rx_tap.map{_ in UpDownEvent.ClickUp},
+            self.downButton.rx_tap.map{_ in UpDownEvent.ClickDown},
+            self.resetButton.rx_tap.map{_ in UpDownEvent.ClickReset},
+            ].toObservable().merge()
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let controller = UpDownController()
         let model = UpDownModel()
-        combineModel(model, withView: self, andController: controller).addDisposableTo(disposeBag)
+        let view = self
+        let controller = UpDownController()
+        let userInteractable = self
+        combineModel(model, withView: view, controller: controller, andUserInteractable: userInteractable).addDisposableTo(disposeBag)
     }
     
     public override func didReceiveMemoryWarning() {

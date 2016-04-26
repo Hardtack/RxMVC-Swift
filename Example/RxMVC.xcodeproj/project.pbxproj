@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0806AF17695DE48CC48428EC /* Pods_RxMVC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5004AF2B5B42E2FFC03FA43 /* Pods_RxMVC_Example.framework */; };
-		235C93881CCE2C6000E67605 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93841CCE2C6000E67605 /* Controller.swift */; };
-		235C938A1CCE2C6000E67605 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93851CCE2C6000E67605 /* Model.swift */; };
-		235C938C1CCE2C6000E67605 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93861CCE2C6000E67605 /* View.swift */; };
-		235C938E1CCE2C6000E67605 /* MVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93871CCE2C6000E67605 /* MVC.swift */; };
 		235C93951CCE2CB700E67605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93901CCE2CB700E67605 /* AppDelegate.swift */; };
 		235C93961CCE2CB700E67605 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93911CCE2CB700E67605 /* MasterViewController.swift */; };
 		235C93981CCE2CB700E67605 /* UpDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93931CCE2CB700E67605 /* UpDownViewController.swift */; };
@@ -33,10 +29,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		235C93841CCE2C6000E67605 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
-		235C93851CCE2C6000E67605 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		235C93861CCE2C6000E67605 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		235C93871CCE2C6000E67605 /* MVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVC.swift; sourceTree = "<group>"; };
 		235C93901CCE2CB700E67605 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235C93911CCE2CB700E67605 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		235C93931CCE2CB700E67605 /* UpDownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownViewController.swift; sourceTree = "<group>"; };
@@ -79,21 +71,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		235C93831CCE2C5300E67605 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				235C93841CCE2C6000E67605 /* Controller.swift */,
-				235C93851CCE2C6000E67605 /* Model.swift */,
-				235C93861CCE2C6000E67605 /* View.swift */,
-				235C93871CCE2C6000E67605 /* MVC.swift */,
-			);
-			name = Sources;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				235C93831CCE2C5300E67605 /* Sources */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for RxMVC */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -382,13 +362,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				235C93881CCE2C6000E67605 /* Controller.swift in Sources */,
 				235C93981CCE2CB700E67605 /* UpDownViewController.swift in Sources */,
-				235C938C1CCE2C6000E67605 /* View.swift in Sources */,
 				235C93961CCE2CB700E67605 /* MasterViewController.swift in Sources */,
-				235C938E1CCE2C6000E67605 /* MVC.swift in Sources */,
 				235C93951CCE2CB700E67605 /* AppDelegate.swift in Sources */,
-				235C938A1CCE2C6000E67605 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

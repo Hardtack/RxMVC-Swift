@@ -13,7 +13,7 @@ public protocol Controller {
     associatedtype Event // Event type
     associatedtype Action // Action type
     
-    func subscribe(eventStream: Observable<Event>) -> Observable<Action>
+    func use(eventStream: Observable<Event>) -> Observable<Action>
 }
 
 public protocol MapController: Controller {
@@ -24,7 +24,7 @@ public protocol MapController: Controller {
 }
 
 public extension MapController {
-    func subscribe(eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
         return eventStream.map({ (e) in
             return self.mapEventToAction(e)
         })
@@ -39,7 +39,7 @@ public protocol FlatMapController: Controller {
 }
 
 public extension FlatMapController {
-    func subscribe(eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
         return eventStream.flatMap({ (e) in
             return self.flatMapEventToAction(e)
         })

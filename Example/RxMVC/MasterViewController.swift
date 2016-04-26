@@ -58,7 +58,7 @@ struct MasterControlelr: FlatMapController {
     }
 }
 
-class MasterViewController: UITableViewController, View, UISplitViewControllerDelegate, MasterControllerDelegate {
+class MasterViewController: UITableViewController, UserInteractable, View, UISplitViewControllerDelegate, MasterControllerDelegate {
     typealias Event = MasterEvent
     typealias State = [UIViewController]
     
@@ -67,7 +67,7 @@ class MasterViewController: UITableViewController, View, UISplitViewControllerDe
     var selectedViewController: UIViewController? = nil
     
     
-    func subscribe(stateStream: Observable<State>) -> Disposable {
+    func update(stateStream: Observable<State>) -> Disposable {
         // Set initial detail view controller
         tableView.delegate = nil
         tableView.dataSource = nil
@@ -78,12 +78,10 @@ class MasterViewController: UITableViewController, View, UISplitViewControllerDe
             }])
     }
     
-    var eventStream: Observable<Event> {
-        get {
-            return [
-                tableView.rx_modelSelected(UIViewController).map({vc in MasterEvent.ClickItem(item: vc)})
-                ].toObservable().merge()
-        }
+    func interact() -> Observable<Event> {
+        return [
+            tableView.rx_modelSelected(UIViewController).map({vc in MasterEvent.ClickItem(item: vc)})
+            ].toObservable().merge()
     }
     
     override func viewDidLoad() {
@@ -94,7 +92,8 @@ class MasterViewController: UITableViewController, View, UISplitViewControllerDe
         let model = MasterModel()
         let view = self
         let controller = MasterControlelr(delegate: self)
-        combineModel(model, withView: view, andController: controller).addDisposableTo(disposeBag)
+        let userInteracbable = self
+        combineModel(model, withView: view, controller: controller, andUserInteractable: userInteracbable).addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(animated: Bool) {
