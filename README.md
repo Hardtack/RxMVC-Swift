@@ -7,6 +7,20 @@
 
 Model-View-Controller pattern with [RxSwift](https://github.com/ReactiveX/RxSwift).
 
+## Mode-View-Controller
+
+RxMVC supports to implement Model-View-Controller pattern with RxSwift like this:
+![MVC in Wikipedia](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg =500x)
+[_(from wikipedia)_](https://en.wikipedia.org/wiki/Model–view–controller )
+
+**Not this**:
+
+![MVC in Wikipedia](./Resources/MVC_Cocoa.png =500x)
+
+[_(from apple's document)_](https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html)
+
+I don't know what the original definition is. But RxMVC is targeted to Wikipedia's definition.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
