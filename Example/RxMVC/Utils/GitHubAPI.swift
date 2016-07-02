@@ -2,7 +2,8 @@
 //  GitHubAPI.swift
 //  RxMVC
 //
-//  Created by Owen Choi on 2016. 7. 3..
+//  Simple API interface for GitHub.
+//
 //  Copyright © 2016년 CocoaPods. All rights reserved.
 //
 
