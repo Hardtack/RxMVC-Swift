@@ -59,10 +59,10 @@ public class UpDownViewController: UIViewController, View, UserInteractable {
     public typealias Event = UpDownEvent
     public typealias State = Int
     
-    let countLabel = UILabel()
-    let upButton = UIButton()
-    let downButton = UIButton()
-    let resetButton = UIButton()
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var upButton: UIButton!
+    @IBOutlet weak var downButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     var disposeBag = DisposeBag()
     
