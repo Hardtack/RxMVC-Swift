@@ -30,7 +30,8 @@ struct MasterModel: ConstantModel {
     typealias State = [NameAndSegue]
     
     let state: [NameAndSegue] = [
-        NameAndSegue(name: "Up & Down", segue: "ShowUpDown")
+        NameAndSegue(name: "Up & Down", segue: "ShowUpDown"),
+        NameAndSegue(name: "GitHub Search", segue: "ShowGitHubSearch")
     ]
 }
 

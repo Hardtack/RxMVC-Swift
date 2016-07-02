@@ -2,6 +2,12 @@ PODS:
   - Alamofire (3.4.1)
   - Nimble (3.2.0)
   - Quick (0.9.2)
+  - Reachability (3.2)
+  - RxAlamofire (2.5):
+    - RxAlamofire/Core (= 2.5)
+  - RxAlamofire/Core (2.5):
+    - Alamofire (~> 3.4)
+    - RxSwift (~> 2.5)
   - RxBlocking (2.5.0):
     - RxSwift (~> 2.5)
   - RxCocoa (2.5.0):
@@ -17,6 +23,8 @@ PODS:
 DEPENDENCIES:
   - Nimble (~> 3.0)
   - Quick (~> 0.8)
+  - Reachability (~> 3.0)
+  - RxAlamofire (~> 2.0)
   - RxBlocking (~> 2.0)
   - RxMVC (from `../`)
   - RxTests (~> 2.0)
@@ -29,12 +37,14 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  RxAlamofire: b4572a077b6b2410c8732a27266299df4c00736e
   RxBlocking: 595d9ab56dde6b00beaa5aba40e95b150d2135f1
   RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
   RxMVC: ae354ffe5d5114da6160bc03551f627bc57ece0b
   RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
   RxTests: 1b13bea0a138552b52aeead549ef08d578bcda9e
 
-PODFILE CHECKSUM: c210e7b5a4e920fd1dc0bf2f8422fc9cf74b6578
+PODFILE CHECKSUM: cdd159dcb0b131037900f092bd375c7712af0d49
 
 COCOAPODS: 1.0.1

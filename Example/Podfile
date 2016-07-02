@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'RxMVC_Example' do
   pod 'RxMVC', :path => '../'
+  pod 'Reachability', '~> 3.0'
+  pod 'RxAlamofire', '~> 2.0'
 
   target 'RxMVC_Tests' do
     inherit! :search_paths
