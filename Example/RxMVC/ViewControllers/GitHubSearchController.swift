@@ -9,6 +9,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import Alamofire
 import RxMVC
 
@@ -37,9 +38,11 @@ struct GitHubSearchController: FlatMapController {
                 return Observable.of(Action.UpdateQuery(nil), Action.UpdateRepositories([]))
             } else {
                 return Observable.just(Action.UpdateQuery(query)).concat(
-                    GitHubAPI(manager: Manager.sharedInstance).searchRepo(query).asDriver(onErrorJustReturn: []).map { repositories in
+                    GitHubAPI(manager: Manager.sharedInstance).searchRepo(query).map { repositories in
                         return Action.UpdateRepositories(repositories)
-                    })
+                    }.asDriver(onErrorRecover: { (error) -> Driver<Action> in
+                        return Driver.just(Action.RepositoriesError(error))
+                    }))
             }
         case .SelectRepository(let repository):
             if let url = NSURL(string: repository.htmlURL) {

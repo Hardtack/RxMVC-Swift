@@ -16,9 +16,15 @@ enum GitHubSearchEvent {
 enum GitHubSearchAction {
     case UpdateQuery(String?)
     case UpdateRepositories([Repository])
+    case RepositoriesError(ErrorType)
+}
+
+enum RepositoriesState {
+    case Some([Repository])
+    case Error(ErrorType)
 }
 
 struct GitHubSearchState {
     let query: String?
-    let repositories: [Repository]
+    let repositories: RepositoriesState
 }
