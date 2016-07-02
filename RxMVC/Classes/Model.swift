@@ -25,7 +25,7 @@ public protocol ConstantModel: Model {
 
 public extension ConstantModel {
     func manipulate(actionStream: Observable<Action>) -> Observable<State> {
-        return Observable.just(self.state)
+        return Observable.of(Observable.just(state), actionStream.map({ _ in self.state})).merge()
     }
 }
 
