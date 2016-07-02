@@ -11,6 +11,5 @@ target 'RxMVC_Example' do
     pod 'RxTests',    '~> 2.0'
     pod 'Quick', '~> 0.8'
     pod 'Nimble', '~> 3.0'
-    pod 'Nimble-Snapshots'
   end
 end
