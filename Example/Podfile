@@ -1,16 +1,17 @@
 use_frameworks!
 
-target 'RxMVC_Example', :exclusive => true do
+target 'RxMVC_Example' do
   pod 'RxMVC', :path => '../'
-end
 
-target 'RxMVC_Tests', :exclusive => true do
-  pod 'RxMVC', :path => '../'
-  
-  pod 'RxBlocking', '~> 2.0'
-  pod 'RxTests',    '~> 2.0'
-  pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
-  pod 'FBSnapshotTestCase'
-  pod 'Nimble-Snapshots'
+  target 'RxMVC_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 0.8'
+    pod 'RxBlocking', '~> 2.0'
+    pod 'RxTests',    '~> 2.0'
+    pod 'Quick', '~> 0.8'
+    pod 'Nimble', '~> 3.0'
+    pod 'FBSnapshotTestCase'
+    pod 'Nimble-Snapshots'
+  end
 end
