@@ -1,8 +1,10 @@
 //
 //  UpDownViewController.swift
 //  Examples
+//  
+//  The most simple example of RxMVC
+//  Just increases/decreases a number.
 //
-//  Created by 최건우 on 2016. 4. 22..
 //  Copyright © 2016년 Choi Geonu. All rights reserved.
 //
 

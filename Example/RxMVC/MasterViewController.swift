@@ -2,7 +2,9 @@
 //  MasterViewController.swift
 //  Examples
 //
-//  Created by 최건우 on 2016. 4. 22..
+//  Entry point of application.
+//  It shows that how controller treat actions that can not be done without UIViewController. 
+//
 //  Copyright © 2016년 Choi Geonu. All rights reserved.
 //
 
