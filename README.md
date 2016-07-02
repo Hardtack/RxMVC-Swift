@@ -10,12 +10,12 @@ Model-View-Controller pattern with [RxSwift](https://github.com/ReactiveX/RxSwif
 ## Mode-View-Controller
 
 RxMVC supports to implement Model-View-Controller pattern with RxSwift like this:
-![MVC in Wikipedia](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg =500x)
-[_(from wikipedia)_](https://en.wikipedia.org/wiki/Model–view–controller )
+![MVC in Wikipedia](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg)
+[_(from wikipedia)_](https://en.wikipedia.org/wiki/Model–view–controller)
 
 **Not this**:
 
-![MVC in Wikipedia](./Resources/MVC_Cocoa.png =500x)
+![MVC in Wikipedia](./Resources/MVC_Cocoa.png)
 
 [_(from apple's document)_](https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html)
 
