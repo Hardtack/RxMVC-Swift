@@ -11,31 +11,29 @@ import RxSwift
 import RxMVC
 
 enum MasterEvent {
-    case ClickItem(item: UIViewController)
+    case ClickItem(item: NameAndSegue)
 }
 
 enum MasterAction {
     
 }
 
-extension UIViewController {
-    func withTitle(title: String) -> UIViewController {
-        self.title = title
-        return self
-    }
+struct NameAndSegue {
+    let name: String
+    let segue: String
 }
 
 struct MasterModel: ConstantModel {
     typealias Action = MasterAction
-    typealias State = [UIViewController]
+    typealias State = [NameAndSegue]
     
-    let state: [UIViewController] = [
-        UpDownViewController().withTitle("Up & Down")
+    let state: [NameAndSegue] = [
+        NameAndSegue(name: "Up & Down", segue: "ShowUpDown")
     ]
 }
 
 protocol MasterControllerDelegate: class {
-    func showSelectedViewController(viewController: UIViewController)
+    func performSelectedSegue(segue: String)
 }
 
 struct MasterControlelr: FlatMapController {
@@ -52,7 +50,7 @@ struct MasterControlelr: FlatMapController {
     func flatMapEventToAction(event: Event) -> Observable<Action> {
         switch event {
         case .ClickItem(let item):
-            self.delegate?.showSelectedViewController(item)
+            self.delegate?.performSelectedSegue(item.segue)
         }
         return Observable.empty()
     }
@@ -60,7 +58,7 @@ struct MasterControlelr: FlatMapController {
 
 class MasterViewController: UITableViewController, UserInteractable, View, UISplitViewControllerDelegate, MasterControllerDelegate {
     typealias Event = MasterEvent
-    typealias State = [UIViewController]
+    typealias State = [NameAndSegue]
     
     var disposeBag = DisposeBag()
     
@@ -68,19 +66,15 @@ class MasterViewController: UITableViewController, UserInteractable, View, UISpl
     
     
     func update(stateStream: Observable<State>) -> Disposable {
-        // Set initial detail view controller
-        tableView.delegate = nil
-        tableView.dataSource = nil
-        
         return CompositeDisposable(disposables: [
             stateStream.bindTo(tableView.rx_itemsWithCellIdentifier("Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
-                cell.textLabel?.text = element.title
+                cell.textLabel?.text = element.name
             }])
     }
     
     func interact() -> Observable<Event> {
         return [
-            tableView.rx_modelSelected(UIViewController).map({vc in MasterEvent.ClickItem(item: vc)})
+            tableView.rx_modelSelected(NameAndSegue).map({vc in MasterEvent.ClickItem(item: vc)})
             ].toObservable().merge()
     }
     
@@ -88,6 +82,9 @@ class MasterViewController: UITableViewController, UserInteractable, View, UISpl
         super.viewDidLoad()
         
         self.splitViewController?.delegate = self
+        // Set initial detail view controller
+        tableView.delegate = nil
+        tableView.dataSource = nil
         
         let model = MasterModel()
         let view = self
@@ -107,11 +104,8 @@ class MasterViewController: UITableViewController, UserInteractable, View, UISpl
     }
     
     // MARK: - Controller delegate functions
-    
-    func showSelectedViewController(viewController: UIViewController) {
-        self.selectedViewController = viewController
-        guard let split = self.splitViewController else {return}
-        split.showDetailViewController(viewController, sender: nil)
+    func performSelectedSegue(segue: String) {
+        performSegueWithIdentifier(segue, sender: self)
     }
     
     // MARK: - Split view
