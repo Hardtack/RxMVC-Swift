@@ -14,7 +14,6 @@ Model-View-Controller pattern with RxSwift.
 
   s.source_files = 'RxMVC/Classes/**/*'
   s.resource_bundles = {
-    'RxMVC' => []
   }
 
   s.dependency 'RxSwift',    '~> 2.0'
