@@ -16,6 +16,6 @@ Model-View-Controller pattern with RxSwift.
   s.resource_bundles = {
   }
 
-  s.dependency 'RxSwift',    '~> 2.0'
-  s.dependency 'RxCocoa',    '~> 2.0'
+  s.dependency 'RxSwift',    '~> 2.5'
+  s.dependency 'RxCocoa',    '~> 2.5'
 end
