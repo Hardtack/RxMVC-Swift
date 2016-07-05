@@ -7,6 +7,7 @@ rvm:
 before_install:
   - sudo gem install bundler
   - bundle install
+  - pod repo update
   - pod install --project-directory=Example
 script:
   - set -o pipefail && xcodebuild test -workspace Example/RxMVC.xcworkspace -scheme RxMVC-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
