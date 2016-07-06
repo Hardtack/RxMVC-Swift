@@ -59,14 +59,9 @@ struct MasterControlelr: FlatMapController {
     }
 }
 
-class MasterViewController: UITableViewController, UserInteractable, View, UISplitViewControllerDelegate, MasterControllerDelegate {
-    typealias Event = MasterEvent
+struct MasterView: View {
     typealias State = [NameAndSegue]
-    
-    var disposeBag = DisposeBag()
-    
-    var selectedViewController: UIViewController? = nil
-    
+    let tableView: UITableView
     
     func update(stateStream: Observable<State>) -> Disposable {
         return CompositeDisposable(disposables: [
@@ -74,12 +69,23 @@ class MasterViewController: UITableViewController, UserInteractable, View, UISpl
                 cell.textLabel?.text = element.name
             }])
     }
+}
+
+struct MasterUserInteractable: UserInteractable {
+    typealias Event = MasterEvent
+    let tableView: UITableView
     
     func interact() -> Observable<Event> {
         return [
             tableView.rx_modelSelected(NameAndSegue).map({vc in MasterEvent.ClickItem(item: vc)})
             ].toObservable().merge()
     }
+}
+
+class MasterViewController: UITableViewController, UISplitViewControllerDelegate, MasterControllerDelegate {
+    var disposeBag = DisposeBag()
+    
+    var selectedViewController: UIViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,10 +96,11 @@ class MasterViewController: UITableViewController, UserInteractable, View, UISpl
         tableView.dataSource = nil
         
         let model = MasterModel()
-        let view = self
+        let view = MasterView(tableView: tableView)
         let controller = MasterControlelr(delegate: self)
-        let userInteracbable = self
-        combineModel(model, withView: view, controller: controller, andUserInteractable: userInteracbable).addDisposableTo(disposeBag)
+        let userInteractable = MasterUserInteractable(tableView: tableView)
+        combineModel(model, withView: view, controller: controller, andUserInteractable: userInteractable)
+            .addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(animated: Bool) {

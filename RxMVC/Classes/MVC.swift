@@ -15,3 +15,11 @@ public func combineModel
     (model: M, withView view: V, controller: C, andUserInteractable userInteractable: U) -> Disposable {
     return view.update(model.manipulate(controller.use(userInteractable.interact())))
 }
+
+
+public func combineModel
+    <M: Model, V: View, C: Controller where
+    V: UserInteractable, M.State == V.State, V.Event == C.Event, C.Action == M.Action>
+    (model: M, withView view: V, controller: C) -> Disposable {
+    return view.update(model.manipulate(controller.use(view.interact())))
+}
