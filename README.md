@@ -25,6 +25,10 @@ I don't know what the original definition is. But RxMVC is targeted to upper def
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Documentation
+
+See [Wiki](https://github.com/Hardtack/RxMVC-Swift/wiki)
+
 ## Author
 
 Choi Geonu, 6566gun@gmail.com
