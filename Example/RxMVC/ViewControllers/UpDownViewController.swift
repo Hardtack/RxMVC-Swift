@@ -81,8 +81,7 @@ class UpDownViewController: UIViewController, View, UserInteractable {
         let model = UpDownModel()
         let view = self
         let controller = UpDownController()
-        let userInteractable = self
-        combineModel(model, withView: view, controller: controller, andUserInteractable: userInteractable).addDisposableTo(disposeBag)
+        combineModel(model, withView: view, controller: controller).addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {

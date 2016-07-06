@@ -24,12 +24,7 @@ class GitHubSearchViewController: UIViewController, GitHubSearchControllerDelega
         let model = GitHubSearchModel()
         let view = GitHubSearchView(searchTextField: searchTextField, tableView: tableView)
         let controller = GitHubSearchController(delegate: self)
-        let userInteractable = view
-        combineModel(model,
-            withView: view,
-            controller: controller,
-            andUserInteractable: userInteractable)
-            .addDisposableTo(disposeBag)
+        combineModel(model, withView: view, controller: controller).addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
