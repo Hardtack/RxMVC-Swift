@@ -7,6 +7,10 @@
 
 Model-View-Controller pattern with [RxSwift](https://github.com/ReactiveX/RxSwift).
 
+## Documentation
+
+See [Wiki](https://github.com/Hardtack/RxMVC-Swift/wiki)
+
 ## Mode-View-Controller
 
 RxMVC supports to implement Model-View-Controller pattern with RxSwift like this:
@@ -24,15 +28,3 @@ I don't know what the original definition is. But RxMVC is targeted to upper def
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Documentation
-
-See [Wiki](https://github.com/Hardtack/RxMVC-Swift/wiki)
-
-## Author
-
-Choi Geonu, 6566gun@gmail.com
-
-## License
-
-RxMVC is available under the MIT license. See the LICENSE file for more info.
