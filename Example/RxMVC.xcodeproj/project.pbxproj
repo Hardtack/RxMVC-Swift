@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		235C93951CCE2CB700E67605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C93901CCE2CB700E67605 /* AppDelegate.swift */; };
 		235C93991CCE2CB700E67605 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235C93941CCE2CB700E67605 /* Main.storyboard */; };
-		5A7A266B1D30C3CA00219E63 /* UpDownTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A266A1D30C3CA00219E63 /* UpDownTest.swift */; };
+		5A7A266F1D30CB2900219E63 /* UpDownTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A266D1D30CB2400219E63 /* UpDownTest.swift */; };
+		5A7A26711D30CB4A00219E63 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7A26701D30CB4A00219E63 /* ModelTest.swift */; };
 		5AB80BB21D28402D00C13E1E /* GitHubSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80BAF1D28402D00C13E1E /* GitHubSearchViewController.swift */; };
 		5AB80BB31D28402D00C13E1E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80BB01D28402D00C13E1E /* MasterViewController.swift */; };
 		5AB80BB41D28402D00C13E1E /* UpDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80BB11D28402D00C13E1E /* UpDownViewController.swift */; };
@@ -38,7 +39,8 @@
 		235C93901CCE2CB700E67605 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235C93941CCE2CB700E67605 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		29FB0BBE892E25D5DB0879E8 /* Pods_RxMVC_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMVC_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A7A266A1D30C3CA00219E63 /* UpDownTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownTest.swift; sourceTree = "<group>"; };
+		5A7A266D1D30CB2400219E63 /* UpDownTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownTest.swift; sourceTree = "<group>"; };
+		5A7A26701D30CB4A00219E63 /* ModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		5AB80BAF1D28402D00C13E1E /* GitHubSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewController.swift; sourceTree = "<group>"; };
 		5AB80BB01D28402D00C13E1E /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		5AB80BB11D28402D00C13E1E /* UpDownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A7A266C1D30CB2400219E63 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				5A7A266D1D30CB2400219E63 /* UpDownTest.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		5AB80BAE1D28402D00C13E1E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +179,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5A7A266C1D30CB2400219E63 /* Example */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				5A7A266A1D30C3CA00219E63 /* UpDownTest.swift */,
+				5A7A26701D30CB4A00219E63 /* ModelTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -420,7 +431,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A7A266B1D30C3CA00219E63 /* UpDownTest.swift in Sources */,
+				5A7A266F1D30CB2900219E63 /* UpDownTest.swift in Sources */,
+				5A7A26711D30CB4A00219E63 /* ModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
