@@ -78,7 +78,7 @@ struct UpDownController: MapController {
             return Action.Increase
         case .ClickDown:
             return Action.Decrease
-        default:
+        case .ClickReset:
             return Action.Reset
         }
     }
