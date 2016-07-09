@@ -39,8 +39,10 @@ public protocol ReducerModel: Model {
 
 public extension ReducerModel {
     func manipulate(actionStream: Observable<Action>) -> Observable<State> {
-        return actionStream.scan(initialState, accumulator: {state, action in
+        let initial = Observable.just(initialState)
+        let reduced = actionStream.scan(initialState, accumulator: {state, action in
             return self.reduce(state, with: action)
         })
+        return initial.concat(reduced)
     }
 }
