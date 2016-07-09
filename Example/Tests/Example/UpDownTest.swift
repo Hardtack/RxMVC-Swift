@@ -39,4 +39,23 @@ class UpDownTest: XCTestCase {
         ]
         XCTAssertEqual(res.events, expected)
     }
+
+    func testController() {
+        let controller = UpDownController()
+        let scheduler = TestScheduler(initialClock: 0)
+        let xs = scheduler.createHotObservable([
+            next(210, UpDownEvent.ClickUp),
+            next(220, UpDownEvent.ClickDown),
+            next(230, UpDownEvent.ClickReset),
+            completed(300)
+            ])
+        let res = scheduler.start { controller.use(xs.asObservable()) }
+        let expected = [
+            next(210, UpDownAction.Increase),
+            next(220, UpDownAction.Decrease),
+            next(230, UpDownAction.Reset),
+            completed(300)
+        ]
+        XCTAssertEqual(res.events, expected)
+    }
 }
