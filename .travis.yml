@@ -6,13 +6,21 @@ cache:
   - bundler
   - cocoapods
 podfile: Example/Podfile
-install:
+before_install:
 - bundle install
 - pod repo remove master
 - pod setup
-- bundle exec pod install --project-directory=Example
+install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+- bundle exec pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -workspace Example/RxMVC.xcworkspace -scheme RxMVC-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+- >
+  set -o pipefail &&
+  xcodebuild test
+  -workspace Example/RxMVC.xcworkspace
+  -scheme RxMVC-Example
+  -sdk iphonesimulator9.3
+  -jobs `sysctl hw.ncpu | awk '{print 2*$2}'`
+  ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
 
