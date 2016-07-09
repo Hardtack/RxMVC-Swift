@@ -25,8 +25,6 @@ enum UpDownAction {
     case Reset
 }
 
-typealias State = Int
-
 struct UpDownModel: ReducerModel {
     typealias Action = UpDownAction
     typealias State = Int
