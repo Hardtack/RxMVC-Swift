@@ -21,5 +21,5 @@ public func combineModel
     <M: Model, V: View, C: Controller where
     V: UserInteractable, M.State == V.State, V.Event == C.Event, C.Action == M.Action>
     (model: M, withView view: V, controller: C) -> Disposable {
-    return view.update(model.manipulate(controller.use(view.interact())))
+    return combineModel(model, withView: view, controller: controller, andUserInteractable: view)
 }
