@@ -13,18 +13,18 @@ public protocol Controller {
     associatedtype Event // Event type
     associatedtype Action // Action type
     
-    func use(eventStream: Observable<Event>) -> Observable<Action>
+    func use(_ eventStream: Observable<Event>) -> Observable<Action>
 }
 
 public protocol MapController: Controller {
     associatedtype Event // Event type
     associatedtype Action // Action type
     
-    func mapEventToAction(event: Event) -> Action
+    func mapEventToAction(_ event: Event) -> Action
 }
 
 public extension MapController {
-    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(_ eventStream: Observable<Event>) -> Observable<Self.Action> {
         return eventStream.map({ (e) in
             return self.mapEventToAction(e)
         })
@@ -32,9 +32,9 @@ public extension MapController {
 }
 
 public enum FlatMapType {
-    case Normal
-    case First
-    case Latest
+    case normal
+    case first
+    case latest
 }
 
 public protocol FlatMapController: Controller {
@@ -43,27 +43,27 @@ public protocol FlatMapController: Controller {
     
     var flatMapType: FlatMapType {get}
     
-    func flatMapEventToAction(event: Event) -> Observable<Action>
+    func flatMapEventToAction(_ event: Event) -> Observable<Action>
 }
 
 public extension FlatMapController {
     var flatMapType: FlatMapType {
         get {
-            return FlatMapType.Normal
+            return FlatMapType.normal
         }
     }
     
-    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(_ eventStream: Observable<Event>) -> Observable<Self.Action> {
         switch flatMapType {
-        case .Normal:
+        case .normal:
             return eventStream.flatMap({ (e) in
                 return self.flatMapEventToAction(e)
             })
-        case .First:
+        case .first:
             return eventStream.flatMapFirst({ (e) in
                 return self.flatMapEventToAction(e)
             })
-        case .Latest:
+        case .latest:
             return eventStream.flatMapLatest({ (e) in
                 return self.flatMapEventToAction(e)
             })

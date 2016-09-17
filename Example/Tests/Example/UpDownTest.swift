@@ -16,13 +16,13 @@ class UpDownTest: XCTestCase {
         let model = UpDownModel()
         let scheduler = TestScheduler(initialClock: 0)
         let xs = scheduler.createHotObservable([
-            next(210, UpDownAction.Increase),
-            next(220, UpDownAction.Increase),
-            next(230, UpDownAction.Increase),
-            next(240, UpDownAction.Decrease),
-            next(250, UpDownAction.Decrease),
-            next(260, UpDownAction.Reset),
-            next(270, UpDownAction.Increase),
+            next(210, UpDownAction.increase),
+            next(220, UpDownAction.increase),
+            next(230, UpDownAction.increase),
+            next(240, UpDownAction.decrease),
+            next(250, UpDownAction.decrease),
+            next(260, UpDownAction.reset),
+            next(270, UpDownAction.increase),
             completed(300)
             ])
         let res = scheduler.start { model.manipulate(xs.asObservable()) }
@@ -44,16 +44,16 @@ class UpDownTest: XCTestCase {
         let controller = UpDownController()
         let scheduler = TestScheduler(initialClock: 0)
         let xs = scheduler.createHotObservable([
-            next(210, UpDownEvent.ClickUp),
-            next(220, UpDownEvent.ClickDown),
-            next(230, UpDownEvent.ClickReset),
+            next(210, UpDownEvent.clickUp),
+            next(220, UpDownEvent.clickDown),
+            next(230, UpDownEvent.clickReset),
             completed(300)
             ])
         let res = scheduler.start { controller.use(xs.asObservable()) }
         let expected = [
-            next(210, UpDownAction.Increase),
-            next(220, UpDownAction.Decrease),
-            next(230, UpDownAction.Reset),
+            next(210, UpDownAction.increase),
+            next(220, UpDownAction.decrease),
+            next(230, UpDownAction.reset),
             completed(300)
         ]
         XCTAssertEqual(res.events, expected)

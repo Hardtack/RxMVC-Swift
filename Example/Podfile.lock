@@ -1,46 +1,55 @@
 PODS:
-  - Alamofire (3.4.1)
-  - JLToast (1.4.2)
+  - Alamofire (4.0.0)
   - Reachability (3.2)
   - RxAlamofire (2.5):
     - RxAlamofire/Core (= 2.5)
   - RxAlamofire/Core (2.5):
-    - Alamofire (~> 3.4)
-    - RxSwift (~> 2.5)
-  - RxBlocking (2.5.0):
-    - RxSwift (~> 2.5)
-  - RxCocoa (2.5.0):
-    - RxSwift (~> 2.5)
-  - RxMVC (0.1.1):
-    - RxCocoa (~> 2.5)
-    - RxSwift (~> 2.5)
-  - RxSwift (2.5.0)
-  - RxTests (2.5.0):
-    - RxSwift (~> 2.5)
+    - Alamofire (~> 4.0)
+    - RxCocoa (~> 3.0.0-beta.1)
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxBlocking (3.0.0-beta.1):
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxCocoa (3.0.0-beta.1):
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxMVC (0.1.2):
+    - RxCocoa (~> 3.0.0-beta.1)
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxSwift (3.0.0-beta.1)
+  - RxTests (3.0.0-beta.1):
+    - RxSwift (~> 3.0.0-beta.1)
+  - Toaster (2.0.0)
 
 DEPENDENCIES:
-  - JLToast (~> 1.4)
+  - Alamofire (~> 4.0)
   - Reachability (~> 3.0)
-  - RxAlamofire (~> 2.0)
-  - RxBlocking (~> 2.5)
+  - RxAlamofire (from `https://github.com/Hardtack/RxAlamofire.git`)
+  - RxBlocking (~> 3.0.0-beta.1)
   - RxMVC (from `../`)
-  - RxTests (~> 2.5)
+  - RxTests (~> 3.0.0-beta.1)
+  - Toaster (~> 2.0)
 
 EXTERNAL SOURCES:
+  RxAlamofire:
+    :git: https://github.com/Hardtack/RxAlamofire.git
   RxMVC:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  RxAlamofire:
+    :commit: 3bfb6ab4d4501d4cea31f4c1ce9cae96dc3b1243
+    :git: https://github.com/Hardtack/RxAlamofire.git
+
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  RxAlamofire: b4572a077b6b2410c8732a27266299df4c00736e
-  RxBlocking: 595d9ab56dde6b00beaa5aba40e95b150d2135f1
-  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
-  RxMVC: e20843a6a384025c925b6867d26c58263e538f85
-  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
-  RxTests: 1b13bea0a138552b52aeead549ef08d578bcda9e
+  RxAlamofire: 54922033a183f18708fef9c2847c4d7e7e567ef1
+  RxBlocking: 422944880fe63b432c459dc87be7c8178dcf45f3
+  RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
+  RxMVC: ce6dad005a67586f2e3235f8df02b3d5feccdf88
+  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  RxTests: 819cbca750007349f03cfdb89bc07d412f67ab96
+  Toaster: 25101e968655aa991fa72ad888029e8d515c6237
 
-PODFILE CHECKSUM: 37bccfc005668b46d59c9809a80e626165ad8447
+PODFILE CHECKSUM: 5cdfdc7f31e2d3f91e8c0e687c57c7fec1b50695
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

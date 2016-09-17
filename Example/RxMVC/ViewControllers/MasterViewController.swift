@@ -13,7 +13,7 @@ import RxSwift
 import RxMVC
 
 enum MasterEvent {
-    case ClickItem(item: NameAndSegue)
+    case clickItem(item: NameAndSegue)
 }
 
 enum MasterAction {
@@ -36,7 +36,7 @@ struct MasterModel: ConstantModel {
 }
 
 protocol MasterControllerDelegate: class {
-    func performSelectedSegue(segue: String)
+    func performSelectedSegue(_ segue: String)
 }
 
 struct MasterControlelr: FlatMapController {
@@ -50,9 +50,9 @@ struct MasterControlelr: FlatMapController {
     }
     
     
-    func flatMapEventToAction(event: Event) -> Observable<Action> {
+    func flatMapEventToAction(_ event: Event) -> Observable<Action> {
         switch event {
-        case .ClickItem(let item):
+        case .clickItem(let item):
             self.delegate?.performSelectedSegue(item.segue)
         }
         return Observable.empty()
@@ -63,9 +63,9 @@ struct MasterView: View {
     typealias State = [NameAndSegue]
     let tableView: UITableView
     
-    func update(stateStream: Observable<State>) -> Disposable {
+    func update(_ stateStream: Observable<State>) -> Disposable {
         return CompositeDisposable(disposables: [
-            stateStream.bindTo(tableView.rx_itemsWithCellIdentifier("Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
+            stateStream.bindTo(tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = element.name
             }])
     }
@@ -76,9 +76,9 @@ struct MasterUserInteractable: UserInteractable {
     let tableView: UITableView
     
     func interact() -> Observable<Event> {
-        return [
-            tableView.rx_modelSelected(NameAndSegue).map({vc in MasterEvent.ClickItem(item: vc)})
-            ].toObservable().merge()
+        return Observable.from([
+            tableView.rx.modelSelected(NameAndSegue.self).map({vc in MasterEvent.clickItem(item: vc)})
+            ]).merge()
     }
 }
 
@@ -103,8 +103,8 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
             .addDisposableTo(disposeBag)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+    override func viewWillAppear(_ animated: Bool) {
+        self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
     
@@ -114,13 +114,13 @@ class MasterViewController: UITableViewController, UISplitViewControllerDelegate
     }
     
     // MARK: - Controller delegate functions
-    func performSelectedSegue(segue: String) {
-        performSegueWithIdentifier(segue, sender: self)
+    func performSelectedSegue(_ segue: String) {
+        performSegue(withIdentifier: segue, sender: self)
     }
     
     // MARK: - Split view
     
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
         guard let _ = selectedViewController else {
             return true
         }

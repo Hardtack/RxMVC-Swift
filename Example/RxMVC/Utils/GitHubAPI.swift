@@ -22,11 +22,11 @@ struct Repository {
 }
 
 public struct GitHubAPI {
-    let manager: Manager
+    let manager: SessionManager
     
-    func searchRepo(key: String) -> Observable<[Repository]> {
-        let URL = NSURL(string: "https://api.github.com/search/repositories")!
-        return manager.rx_JSON(.GET, URL, parameters: ["q": key]).map { data in
+    func searchRepo(_ key: String) -> Observable<[Repository]> {
+        let URL = Foundation.URL(string: "https://api.github.com/search/repositories")!
+        return manager.rx.JSON(.get, URL, parameters: ["q": key]).map { data in
             if let data = data as? Dictionary<String, NSObject> {
                 let items = data["items"]
                 if let items = items as? [Dictionary<String, NSObject>] {
