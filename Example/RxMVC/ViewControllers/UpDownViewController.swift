@@ -30,7 +30,7 @@ struct UpDownModel: ReducerModel {
     typealias State = Int
     
     let initialState = 0
-    func reduce(_ state: State, with action: Action) -> State {
+    func reduce(state: State, with action: Action) -> State {
         switch action {
         case .increase:
             return state + 1
@@ -51,7 +51,7 @@ struct UpDownView: View, UserInteractable {
     let downButton: UIButton
     let resetButton: UIButton
     
-    func update(_ stateStream: Observable<State>) -> Disposable {
+    func update(stateStream: Observable<State>) -> Disposable {
         return stateStream.subscribe(onNext: { (number) in
             self.countLabel.text = "\(number)"
         })
@@ -70,7 +70,7 @@ struct UpDownController: MapController {
     typealias Event = UpDownEvent
     typealias Action = UpDownAction
     
-    func mapEventToAction(_ event: Event) -> Action {
+    func mapToAction(event: Event) -> Action {
         switch event {
         case .clickUp:
             return Action.increase

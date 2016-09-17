@@ -13,5 +13,5 @@ import RxSwift
 public protocol View {
     associatedtype State // State type
     
-    func update(_ stateStream: Observable<State>) -> Disposable
+    func update(stateStream: Observable<State>) -> Disposable
 }

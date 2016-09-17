@@ -50,7 +50,7 @@ struct MasterControlelr: FlatMapController {
     }
     
     
-    func flatMapEventToAction(_ event: Event) -> Observable<Action> {
+    func flatMapToAction(event: Event) -> Observable<Action> {
         switch event {
         case .clickItem(let item):
             self.delegate?.performSelectedSegue(item.segue)
@@ -63,7 +63,7 @@ struct MasterView: View {
     typealias State = [NameAndSegue]
     let tableView: UITableView
     
-    func update(_ stateStream: Observable<State>) -> Disposable {
+    func update(stateStream: Observable<State>) -> Disposable {
         return CompositeDisposable(disposables: [
             stateStream.bindTo(tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = element.name

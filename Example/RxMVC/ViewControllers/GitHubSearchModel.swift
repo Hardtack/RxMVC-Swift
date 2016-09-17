@@ -16,7 +16,7 @@ struct GitHubSearchModel: ReducerModel {
     
     let initialState = GitHubSearchState(query: nil, repositories: RepositoriesState.some([]))
     
-    func reduce(_ state: State, with action: Action) -> State {
+    func reduce(state: State, with action: Action) -> State {
         switch action {
         case .updateQuery(let query):
             return State(query: query, repositories: state.repositories)

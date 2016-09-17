@@ -15,7 +15,7 @@ import RxMVC
 
 
 protocol GitHubSearchControllerDelegate: class {
-    func openURL(_ url: URL)
+    func openURL(url: URL)
 }
 
 struct GitHubSearchController: FlatMapController {
@@ -30,7 +30,7 @@ struct GitHubSearchController: FlatMapController {
         self.delegate = delegate
     }
     
-    func flatMapEventToAction(_ event: Event) -> Observable<Action> {
+    func flatMapToAction(event: Event) -> Observable<Action> {
         switch event {
         case .changeSearchText(let text):
             let query = text.trimmingCharacters(in: CharacterSet.whitespaces)
@@ -38,7 +38,7 @@ struct GitHubSearchController: FlatMapController {
                 return Observable.of(Action.updateQuery(nil), Action.updateRepositories([]))
             } else {
                 return Observable.just(Action.updateQuery(query)).concat(
-                    GitHubAPI(manager: SessionManager.default).searchRepo(query).map { repositories in
+                    GitHubAPI(manager: SessionManager.default).searchRepo(key: query).map { repositories in
                         return Action.updateRepositories(repositories)
                     }.asDriver(onErrorRecover: { (error) -> Driver<Action> in
                         return Driver.just(Action.repositoriesError(error))
@@ -46,7 +46,7 @@ struct GitHubSearchController: FlatMapController {
             }
         case .selectRepository(let repository):
             if let url = URL(string: repository.htmlURL) {
-                self.delegate?.openURL(url)
+                self.delegate?.openURL(url: url)
             }
             return Observable.empty()
         }

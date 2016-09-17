@@ -26,7 +26,7 @@ struct GitHubSearchView: View, UserInteractable {
             ]).merge()
     }
     
-    func update(_ stateStream: Observable<State>) -> Disposable {
+    func update(stateStream: Observable<State>) -> Disposable {
         return CompositeDisposable(disposables: [
             stateStream.map{state in state.query ?? ""}.distinctUntilChanged().bindTo(searchTextField.rx.textInput.text),
             stateStream
