@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxMVC"
-  s.version          = "0.2.0-beta.1"
+  s.version          = "0.2.0-beta.2"
   s.summary          = "Model-View-Controller pattern with RxSwift"
   s.description      = <<-DESC
 Model-View-Controller pattern with RxSwift.
