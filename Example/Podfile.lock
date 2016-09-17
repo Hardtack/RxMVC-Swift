@@ -11,7 +11,7 @@ PODS:
     - RxSwift (~> 3.0.0-beta.1)
   - RxCocoa (3.0.0-beta.1):
     - RxSwift (~> 3.0.0-beta.1)
-  - RxMVC (0.1.2):
+  - RxMVC (0.2.0-beta.1):
     - RxCocoa (~> 3.0.0-beta.1)
     - RxSwift (~> 3.0.0-beta.1)
   - RxSwift (3.0.0-beta.1)
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   RxAlamofire: 54922033a183f18708fef9c2847c4d7e7e567ef1
   RxBlocking: 422944880fe63b432c459dc87be7c8178dcf45f3
   RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
-  RxMVC: ce6dad005a67586f2e3235f8df02b3d5feccdf88
+  RxMVC: ce32532aede2310fb9de436116a11af355632d00
   RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
   RxTests: 819cbca750007349f03cfdb89bc07d412f67ab96
   Toaster: 25101e968655aa991fa72ad888029e8d515c6237
