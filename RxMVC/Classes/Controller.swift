@@ -13,20 +13,20 @@ public protocol Controller {
     associatedtype Event // Event type
     associatedtype Action // Action type
     
-    func use(_ eventStream: Observable<Event>) -> Observable<Action>
+    func use(eventStream: Observable<Event>) -> Observable<Action>
 }
 
 public protocol MapController: Controller {
     associatedtype Event // Event type
     associatedtype Action // Action type
     
-    func mapEventToAction(_ event: Event) -> Action
+    func mapToAction(event: Event) -> Action
 }
 
 public extension MapController {
-    func use(_ eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
         return eventStream.map({ (e) in
-            return self.mapEventToAction(e)
+            return self.mapToAction(event: e)
         })
     }
 }
@@ -43,7 +43,7 @@ public protocol FlatMapController: Controller {
     
     var flatMapType: FlatMapType {get}
     
-    func flatMapEventToAction(_ event: Event) -> Observable<Action>
+    func flatMapToAction(event: Event) -> Observable<Action>
 }
 
 public extension FlatMapController {
@@ -53,19 +53,19 @@ public extension FlatMapController {
         }
     }
     
-    func use(_ eventStream: Observable<Event>) -> Observable<Self.Action> {
+    func use(eventStream: Observable<Event>) -> Observable<Self.Action> {
         switch flatMapType {
         case .normal:
             return eventStream.flatMap({ (e) in
-                return self.flatMapEventToAction(e)
+                return self.flatMapToAction(event: e)
             })
         case .first:
             return eventStream.flatMapFirst({ (e) in
-                return self.flatMapEventToAction(e)
+                return self.flatMapToAction(event: e)
             })
         case .latest:
             return eventStream.flatMapLatest({ (e) in
-                return self.flatMapEventToAction(e)
+                return self.flatMapToAction(event: e)
             })
         }
     }

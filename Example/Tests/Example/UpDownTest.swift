@@ -25,7 +25,7 @@ class UpDownTest: XCTestCase {
             next(270, UpDownAction.increase),
             completed(300)
             ])
-        let res = scheduler.start { model.manipulate(xs.asObservable()) }
+        let res = scheduler.start { model.manipulate(actionStream: xs.asObservable()) }
         let expected = [
             next(200, 0),
             next(210, 1),
@@ -49,7 +49,7 @@ class UpDownTest: XCTestCase {
             next(230, UpDownEvent.clickReset),
             completed(300)
             ])
-        let res = scheduler.start { controller.use(xs.asObservable()) }
+        let res = scheduler.start { controller.use(eventStream: xs.asObservable()) }
         let expected = [
             next(210, UpDownAction.increase),
             next(220, UpDownAction.decrease),

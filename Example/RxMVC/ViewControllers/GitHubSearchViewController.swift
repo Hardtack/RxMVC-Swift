@@ -33,7 +33,7 @@ class GitHubSearchViewController: UIViewController, GitHubSearchControllerDelega
     
     // MARK: - Controller delegate functions
     
-    func openURL(_ url: URL) {
+    func openURL(url: URL) {
         UIApplication.shared.openURL(url)
     }
 }

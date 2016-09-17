@@ -17,7 +17,7 @@ struct TestModel: ReducerModel {
     typealias State = Int
     
     let initialState = 1
-    func reduce(_ state: State, with action: Action) -> State {
+    func reduce(state: State, with action: Action) -> State {
         switch action {
         case .increase:
             return state + 1
@@ -35,7 +35,7 @@ class ModelTest: XCTestCase {
             next(230, TestModel.Action.increase),
             completed(300)
             ])
-        let res = scheduler.start { model.manipulate(xs.asObservable()) }
+        let res = scheduler.start { model.manipulate(actionStream: xs.asObservable()) }
         let expected = [
             next(200, 1),
             next(210, 2),

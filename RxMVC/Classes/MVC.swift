@@ -13,7 +13,10 @@ public func combineModel
     <M: Model, V: View, U: UserInteractable, C: Controller>
     (_ model: M, withView view: V, controller: C, andUserInteractable userInteractable: U) -> Disposable where
     M.State == V.State, U.Event == C.Event, C.Action == M.Action {
-    return view.update(model.manipulate(controller.use(userInteractable.interact())))
+        let eventStream = userInteractable.interact()
+        let actionStream = controller.use(eventStream: eventStream)
+        let stateStream = model.manipulate(actionStream: actionStream)
+        return view.update(stateStream: stateStream)
 }
 
 
