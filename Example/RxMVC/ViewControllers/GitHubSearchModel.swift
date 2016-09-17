@@ -14,16 +14,16 @@ struct GitHubSearchModel: ReducerModel {
     typealias State = GitHubSearchState
     typealias Action = GitHubSearchAction
     
-    let initialState = GitHubSearchState(query: nil, repositories: RepositoriesState.Some([]))
+    let initialState = GitHubSearchState(query: nil, repositories: RepositoriesState.some([]))
     
-    func reduce(state: State, with action: Action) -> State {
+    func reduce(_ state: State, with action: Action) -> State {
         switch action {
-        case .UpdateQuery(let query):
+        case .updateQuery(let query):
             return State(query: query, repositories: state.repositories)
-        case .UpdateRepositories(let repositories):
-            return State(query: state.query, repositories: RepositoriesState.Some(repositories))
-        case .RepositoriesError(let error):
-            return State(query: state.query, repositories: RepositoriesState.Error(error))
+        case .updateRepositories(let repositories):
+            return State(query: state.query, repositories: RepositoriesState.some(repositories))
+        case .repositoriesError(let error):
+            return State(query: state.query, repositories: RepositoriesState.error(error))
         }
     }
 }

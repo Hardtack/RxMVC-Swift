@@ -9,19 +9,19 @@
 import Foundation
 
 enum GitHubSearchEvent {
-    case ChangeSearchText(String)
-    case SelectRepository(Repository)
+    case changeSearchText(String)
+    case selectRepository(Repository)
 }
 
 enum GitHubSearchAction {
-    case UpdateQuery(String?)
-    case UpdateRepositories([Repository])
-    case RepositoriesError(ErrorType)
+    case updateQuery(String?)
+    case updateRepositories([Repository])
+    case repositoriesError(Error)
 }
 
 enum RepositoriesState {
-    case Some([Repository])
-    case Error(ErrorType)
+    case some([Repository])
+    case error(Error)
 }
 
 struct GitHubSearchState {

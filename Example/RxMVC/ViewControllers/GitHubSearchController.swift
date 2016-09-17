@@ -15,14 +15,14 @@ import RxMVC
 
 
 protocol GitHubSearchControllerDelegate: class {
-    func openURL(url: NSURL)
+    func openURL(_ url: URL)
 }
 
 struct GitHubSearchController: FlatMapController {
     typealias Event = GitHubSearchEvent
     typealias Action = GitHubSearchAction
     
-    var flatMapType = FlatMapType.Latest
+    var flatMapType = FlatMapType.latest
     
     weak var delegate: GitHubSearchControllerDelegate?
     
@@ -30,22 +30,22 @@ struct GitHubSearchController: FlatMapController {
         self.delegate = delegate
     }
     
-    func flatMapEventToAction(event: Event) -> Observable<Action> {
+    func flatMapEventToAction(_ event: Event) -> Observable<Action> {
         switch event {
-        case .ChangeSearchText(let text):
-            let query = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        case .changeSearchText(let text):
+            let query = text.trimmingCharacters(in: CharacterSet.whitespaces)
             if query == "" {
-                return Observable.of(Action.UpdateQuery(nil), Action.UpdateRepositories([]))
+                return Observable.of(Action.updateQuery(nil), Action.updateRepositories([]))
             } else {
-                return Observable.just(Action.UpdateQuery(query)).concat(
-                    GitHubAPI(manager: Manager.sharedInstance).searchRepo(query).map { repositories in
-                        return Action.UpdateRepositories(repositories)
+                return Observable.just(Action.updateQuery(query)).concat(
+                    GitHubAPI(manager: SessionManager.default).searchRepo(query).map { repositories in
+                        return Action.updateRepositories(repositories)
                     }.asDriver(onErrorRecover: { (error) -> Driver<Action> in
-                        return Driver.just(Action.RepositoriesError(error))
+                        return Driver.just(Action.repositoriesError(error))
                     }))
             }
-        case .SelectRepository(let repository):
-            if let url = NSURL(string: repository.htmlURL) {
+        case .selectRepository(let repository):
+            if let url = URL(string: repository.htmlURL) {
                 self.delegate?.openURL(url)
             }
             return Observable.empty()

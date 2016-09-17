@@ -12,14 +12,14 @@ import RxTests
 
 struct TestModel: ReducerModel {
     enum Action {
-        case Increase
+        case increase
     }
     typealias State = Int
     
     let initialState = 1
-    func reduce(state: State, with action: Action) -> State {
+    func reduce(_ state: State, with action: Action) -> State {
         switch action {
-        case .Increase:
+        case .increase:
             return state + 1
         }
     }
@@ -30,9 +30,9 @@ class ModelTest: XCTestCase {
         let model = TestModel()
         let scheduler = TestScheduler(initialClock: 0)
         let xs = scheduler.createHotObservable([
-            next(210, TestModel.Action.Increase),
-            next(220, TestModel.Action.Increase),
-            next(230, TestModel.Action.Increase),
+            next(210, TestModel.Action.increase),
+            next(220, TestModel.Action.increase),
+            next(230, TestModel.Action.increase),
             completed(300)
             ])
         let res = scheduler.start { model.manipulate(xs.asObservable()) }

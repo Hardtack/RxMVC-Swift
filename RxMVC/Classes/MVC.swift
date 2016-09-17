@@ -10,16 +10,16 @@ import Foundation
 import RxSwift
 
 public func combineModel
-    <M: Model, V: View, U: UserInteractable, C: Controller where
-    M.State == V.State, U.Event == C.Event, C.Action == M.Action>
-    (model: M, withView view: V, controller: C, andUserInteractable userInteractable: U) -> Disposable {
+    <M: Model, V: View, U: UserInteractable, C: Controller>
+    (_ model: M, withView view: V, controller: C, andUserInteractable userInteractable: U) -> Disposable where
+    M.State == V.State, U.Event == C.Event, C.Action == M.Action {
     return view.update(model.manipulate(controller.use(userInteractable.interact())))
 }
 
 
 public func combineModel
-    <M: Model, V: View, C: Controller where
-    V: UserInteractable, M.State == V.State, V.Event == C.Event, C.Action == M.Action>
-    (model: M, withView view: V, controller: C) -> Disposable {
+    <M: Model, V: View, C: Controller>
+    (_ model: M, withView view: V, controller: C) -> Disposable where
+    V: UserInteractable, M.State == V.State, V.Event == C.Event, C.Action == M.Action {
     return combineModel(model, withView: view, controller: controller, andUserInteractable: view)
 }

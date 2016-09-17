@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxMVC"
-  s.version          = "0.1.2"
+  s.version          = "0.2.0-beta.1"
   s.summary          = "Model-View-Controller pattern with RxSwift"
   s.description      = <<-DESC
 Model-View-Controller pattern with RxSwift.
@@ -16,6 +16,6 @@ Model-View-Controller pattern with RxSwift.
   s.resource_bundles = {
   }
 
-  s.dependency 'RxSwift',    '~> 2.5'
-  s.dependency 'RxCocoa',    '~> 2.5'
+  s.dependency 'RxSwift',    '~> 3.0.0-beta.1'
+  s.dependency 'RxCocoa',    '~> 3.0.0-beta.1'
 end

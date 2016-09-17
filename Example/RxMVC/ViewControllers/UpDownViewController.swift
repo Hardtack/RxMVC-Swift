@@ -14,15 +14,15 @@ import RxCocoa
 import RxMVC
 
 enum UpDownEvent {
-    case ClickUp
-    case ClickDown
-    case ClickReset
+    case clickUp
+    case clickDown
+    case clickReset
 }
 
 enum UpDownAction {
-    case Increase
-    case Decrease
-    case Reset
+    case increase
+    case decrease
+    case reset
 }
 
 struct UpDownModel: ReducerModel {
@@ -30,13 +30,13 @@ struct UpDownModel: ReducerModel {
     typealias State = Int
     
     let initialState = 0
-    func reduce(state: State, with action: Action) -> State {
+    func reduce(_ state: State, with action: Action) -> State {
         switch action {
-        case .Increase:
+        case .increase:
             return state + 1
-        case .Decrease:
+        case .decrease:
             return state - 1
-        case .Reset:
+        case .reset:
             return initialState
         }
     }
@@ -51,18 +51,18 @@ struct UpDownView: View, UserInteractable {
     let downButton: UIButton
     let resetButton: UIButton
     
-    func update(stateStream: Observable<State>) -> Disposable {
-        return stateStream.subscribeNext { (number) in
+    func update(_ stateStream: Observable<State>) -> Disposable {
+        return stateStream.subscribe(onNext: { (number) in
             self.countLabel.text = "\(number)"
-        }
+        })
     }
     
     func interact() -> Observable<Event> {
-        return [
-            self.upButton.rx_tap.map{_ in Event.ClickUp},
-            self.downButton.rx_tap.map{_ in Event.ClickDown},
-            self.resetButton.rx_tap.map{_ in Event.ClickReset},
-            ].toObservable().merge()
+        return Observable.from([
+            self.upButton.rx.tap.map{_ in Event.clickUp},
+            self.downButton.rx.tap.map{_ in Event.clickDown},
+            self.resetButton.rx.tap.map{_ in Event.clickReset},
+            ]).merge()
     }
 }
 
@@ -70,14 +70,14 @@ struct UpDownController: MapController {
     typealias Event = UpDownEvent
     typealias Action = UpDownAction
     
-    func mapEventToAction(event: Event) -> Action {
+    func mapEventToAction(_ event: Event) -> Action {
         switch event {
-        case .ClickUp:
-            return Action.Increase
-        case .ClickDown:
-            return Action.Decrease
-        case .ClickReset:
-            return Action.Reset
+        case .clickUp:
+            return Action.increase
+        case .clickDown:
+            return Action.decrease
+        case .clickReset:
+            return Action.reset
         }
     }
 }
