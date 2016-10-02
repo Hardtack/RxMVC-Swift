@@ -4,7 +4,7 @@ target 'RxMVC_Example' do
   platform :ios, '9.0'
   pod 'RxMVC', :path => '../'
   pod 'Reachability', '~> 3.0'
-  pod 'RxAlamofire', :git => 'https://github.com/Hardtack/RxAlamofire.git'
+  pod 'RxAlamofire', '~> 3.0.0-beta.1'
   pod 'Alamofire', '~> 4.0'
   pod 'Toaster', '~> 2.0'
 

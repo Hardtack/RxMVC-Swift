@@ -26,7 +26,7 @@ public struct GitHubAPI {
     
     func searchRepo(key: String) -> Observable<[Repository]> {
         let URL = Foundation.URL(string: "https://api.github.com/search/repositories")!
-        return manager.rx.JSON(.get, URL, parameters: ["q": key]).map { data in
+        return manager.rx.json(.get, URL, parameters: ["q": key]).map { data in
             if let data = data as? Dictionary<String, NSObject> {
                 let items = data["items"]
                 if let items = items as? [Dictionary<String, NSObject>] {

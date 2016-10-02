@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (4.0.0)
+  - Alamofire (4.0.1)
   - Reachability (3.2)
-  - RxAlamofire (2.5):
-    - RxAlamofire/Core (= 2.5)
-  - RxAlamofire/Core (2.5):
+  - RxAlamofire (3.0.0-beta.1):
+    - RxAlamofire/Core (= 3.0.0-beta.1)
+  - RxAlamofire/Core (3.0.0-beta.1):
     - Alamofire (~> 4.0)
     - RxCocoa (~> 3.0.0-beta.1)
     - RxSwift (~> 3.0.0-beta.1)
@@ -22,27 +22,20 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Reachability (~> 3.0)
-  - RxAlamofire (from `https://github.com/Hardtack/RxAlamofire.git`)
+  - RxAlamofire (~> 3.0.0-beta.1)
   - RxBlocking (~> 3.0.0-beta.1)
   - RxMVC (from `../`)
   - RxTests (~> 3.0.0-beta.1)
   - Toaster (~> 2.0)
 
 EXTERNAL SOURCES:
-  RxAlamofire:
-    :git: https://github.com/Hardtack/RxAlamofire.git
   RxMVC:
     :path: "../"
 
-CHECKOUT OPTIONS:
-  RxAlamofire:
-    :commit: 3bfb6ab4d4501d4cea31f4c1ce9cae96dc3b1243
-    :git: https://github.com/Hardtack/RxAlamofire.git
-
 SPEC CHECKSUMS:
-  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  RxAlamofire: 54922033a183f18708fef9c2847c4d7e7e567ef1
+  RxAlamofire: 3e62073fbe1c0269c942af44b073c10d9dda81ab
   RxBlocking: 422944880fe63b432c459dc87be7c8178dcf45f3
   RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
   RxMVC: 6ba2aa4457723634719fb241c8d784947f1ac941
@@ -50,6 +43,6 @@ SPEC CHECKSUMS:
   RxTests: 819cbca750007349f03cfdb89bc07d412f67ab96
   Toaster: 25101e968655aa991fa72ad888029e8d515c6237
 
-PODFILE CHECKSUM: 5cdfdc7f31e2d3f91e8c0e687c57c7fec1b50695
+PODFILE CHECKSUM: 612d3313b445ef12de3055680de4a11ebecc230f
 
 COCOAPODS: 1.1.0.rc.2
